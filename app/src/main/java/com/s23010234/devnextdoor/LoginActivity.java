@@ -2,36 +2,86 @@ package com.s23010234.devnextdoor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputEditText;
+
+// LoginActivity handles user login by validating credentials against the SQLite database.
 public class LoginActivity extends AppCompatActivity {
+
+    private TextInputEditText usernameInputText;
+    private TextInputEditText passwordInputText;
+    private Button loginButton;
+    private Button signupButton;
+
+    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
 
-        // Initialize the signup button
-        Button signupButton = findViewById(R.id.signupButton);
-        signupButton.setOnClickListener(new View.OnClickListener() {
+        // Initialize views
+        usernameInputText = findViewById(R.id.usernameInputText);
+        passwordInputText = findViewById(R.id.passwordInputText);
+        loginButton = findViewById(R.id.loginButton);
+        signupButton = findViewById(R.id.signupButton);
+
+        // Initialize database helper
+        databaseHelper = new DatabaseHelper(this);
+
+        // Set click listener for login button
+        loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
-                startActivity(intent);
+            public void onClick(View view) {
+                handleLogin();
             }
         });
+
+        // Navigate to SignupActivity on signup button click
+        signupButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, SignupActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+    }
+
+    // Handles the login process by validating user credentials.
+    private void handleLogin() {
+        String username = usernameInputText.getText() != null ? usernameInputText.getText().toString().trim() : "";
+        String password = passwordInputText.getText() != null ? passwordInputText.getText().toString() : "";
+
+        // Validate inputs
+        if (TextUtils.isEmpty(username)) {
+            usernameInputText.setError("Username is required");
+            return;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            passwordInputText.setError("Password is required");
+            return;
+        }
+
+        // Validate user credentials
+        boolean isValidUser = databaseHelper.validateUser(username, password);
+
+        if (isValidUser) {
+            Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
+
+            // Navigate to HomepageActivity after successful login
+            Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+            startActivity(intent);
+            finish(); // Close LoginActivity
+        } else {
+            Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();
+        }
     }
 }
