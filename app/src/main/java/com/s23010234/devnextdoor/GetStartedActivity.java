@@ -14,18 +14,14 @@ import androidx.core.view.WindowInsetsCompat;
 // GetStartedActivity allows users to navigate to Login or Signup screens.
 public class GetStartedActivity extends AppCompatActivity {
 
-    // Called when the activity is starting.
+    private Button loginButton;
+    private Button signupButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Enable edge-to-edge display
         EdgeToEdge.enable(this);
-
-        // Set the layout for this activity
         setContentView(R.layout.activity_get_started);
-
-        // Apply system window insets padding for edge-to-edge UI
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (view, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -33,7 +29,7 @@ public class GetStartedActivity extends AppCompatActivity {
         });
 
         // Initialize the login button and set click listener to navigate to LoginActivity
-        Button loginButton = findViewById(R.id.loginButton);
+        loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,7 +40,7 @@ public class GetStartedActivity extends AppCompatActivity {
         });
 
         // Initialize the signup button and set click listener to navigate to SignupActivity
-        Button signupButton = findViewById(R.id.signupButton);
+        signupButton = findViewById(R.id.signupButton);
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

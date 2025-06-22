@@ -14,26 +14,21 @@ import androidx.core.view.WindowInsetsCompat;
 // WelcomeActivity displays the welcome screen and navigates to GetStartedActivity.
 public class WelcomeActivity extends AppCompatActivity {
 
-    // Called when the activity is starting.
+    private Button continueButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Enable edge-to-edge display
         EdgeToEdge.enable(this);
-
-        // Set the layout for this activity
         setContentView(R.layout.activity_welcome);
-
-        // Apply system window insets padding for edge-to-edge UI
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (view, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             view.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        // Initialize the continue button and set click listener to navigate to GetStartedActivity
-        Button continueButton = findViewById(R.id.continueButton);
+        // Set the continue button to navigate to the GetStartedActivity
+        continueButton = findViewById(R.id.continueButton);
         continueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

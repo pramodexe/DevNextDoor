@@ -39,10 +39,10 @@
         app:layout_constraintVertical_bias="0.47">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/nameInputText"
+            android:id="@+id/usernameInputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your name"
+            android:hint="Enter your username"
             tools:layout_editor_absoluteX="55dp"
             tools:layout_editor_absoluteY="418dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -55,6 +55,7 @@
         app:boxCornerRadiusBottomStart="12dp"
         app:boxCornerRadiusTopEnd="12dp"
         app:boxCornerRadiusTopStart="12dp"
+        app:endIconMode="password_toggle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -63,10 +64,11 @@
         app:layout_constraintVertical_bias="0.56">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/usernameInputText"
+            android:id="@+id/passwordInputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your username"
+            android:hint="Enter your password"
+            android:inputType="textPassword"
             tools:layout_editor_absoluteX="55dp"
             tools:layout_editor_absoluteY="418dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -88,10 +90,10 @@
         app:layout_constraintVertical_bias="0.65">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordInputText"
+            android:id="@+id/confirmPasswordInputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter your password"
+            android:hint="Re-enter your password"
             android:inputType="textPassword"
             tools:layout_editor_absoluteX="55dp"
             tools:layout_editor_absoluteY="418dp" />
@@ -125,10 +127,9 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.458"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.909" />
+        app:layout_constraintVertical_bias="0.913" />
 
     <Button
         android:id="@+id/loginButton"
@@ -142,8 +143,8 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.833"
+        app:layout_constraintHorizontal_bias="0.872"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.922" />
+        app:layout_constraintVertical_bias="0.927" />
 </androidx.constraintlayout.widget.ConstraintLayout>

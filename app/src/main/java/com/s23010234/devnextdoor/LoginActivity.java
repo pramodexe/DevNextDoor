@@ -14,11 +14,11 @@ import com.google.android.material.textfield.TextInputEditText;
 // LoginActivity handles user login by validating credentials against the SQLite database.
 public class LoginActivity extends AppCompatActivity {
 
+    // Input fields and buttons
     private TextInputEditText usernameInputText;
     private TextInputEditText passwordInputText;
     private Button loginButton;
     private Button signupButton;
-
     private DatabaseHelper databaseHelper;
 
     @Override
@@ -64,7 +64,6 @@ public class LoginActivity extends AppCompatActivity {
             usernameInputText.setError("Username is required");
             return;
         }
-
         if (TextUtils.isEmpty(password)) {
             passwordInputText.setError("Password is required");
             return;
@@ -72,14 +71,13 @@ public class LoginActivity extends AppCompatActivity {
 
         // Validate user credentials
         boolean isValidUser = databaseHelper.validateUser(username, password);
-
         if (isValidUser) {
             Toast.makeText(this, "Login successful!", Toast.LENGTH_SHORT).show();
-
             // Navigate to HomepageActivity after successful login
             Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
+            intent.putExtra("isNewUser", false);
             startActivity(intent);
-            finish(); // Close LoginActivity
+            finish();
         } else {
             Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();
         }
