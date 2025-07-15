@@ -3,7 +3,6 @@ package com.s23010234.devnextdoor;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +34,7 @@ public class SignupActivity extends AppCompatActivity {
         });
 
         // Initialize views
-        usernameInputText = findViewById(R.id.usernameInputText);
+        usernameInputText = findViewById(R.id.timesInputText);
         passwordInputText = findViewById(R.id.passwordInputText);
         confirmPasswordInputText = findViewById(R.id.confirmPasswordInputText);
         signupButton = findViewById(R.id.signupButton);

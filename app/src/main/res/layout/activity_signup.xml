@@ -39,7 +39,7 @@
         app:layout_constraintVertical_bias="0.47">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/usernameInputText"
+            android:id="@+id/timesInputText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter your username"
@@ -48,7 +48,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/usernameInputLayout"
+        android:id="@+id/timesInputLayout"
         android:layout_width="300dp"
         android:layout_height="55dp"
         app:boxCornerRadiusBottomEnd="12dp"
