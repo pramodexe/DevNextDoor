@@ -11,6 +11,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.activity.EdgeToEdge;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+import java.util.HashMap;
+import java.util.Map;
 
 // Handles user registration
 public class SignupActivity extends AppCompatActivity {
@@ -20,13 +27,14 @@ public class SignupActivity extends AppCompatActivity {
     private TextInputEditText confirmPasswordInputText;
     private Button signupButton;
     private Button loginButton;
-    private DatabaseHelper databaseHelper;
+    private DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_signup);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -39,10 +47,11 @@ public class SignupActivity extends AppCompatActivity {
         confirmPasswordInputText = findViewById(R.id.confirmPasswordInputText);
         signupButton = findViewById(R.id.signupButton);
         loginButton = findViewById(R.id.loginButton);
-        databaseHelper = new DatabaseHelper(this);
+
+        // Initialize Firebase database reference
+        databaseReference = FirebaseDatabase.getInstance().getReference("users");
 
         signupButton.setOnClickListener(v -> handleSignup());
-
         loginButton.setOnClickListener(v -> {
             startActivity(new Intent(SignupActivity.this, LoginActivity.class));
             finish();
@@ -62,29 +71,52 @@ public class SignupActivity extends AppCompatActivity {
             usernameInputText.setError("Username required");
             return;
         }
+
         if (TextUtils.isEmpty(password)) {
             passwordInputText.setError("Password required");
             return;
         }
+
         if (!password.equals(confirmPassword)) {
             confirmPasswordInputText.setError("Passwords must match");
             return;
         }
 
         // Check username availability
-        if (databaseHelper.isUsernameExists(username)) {
-            usernameInputText.setError("Username taken");
-            return;
-        }
+        checkUsernameAvailability(username, password);
+    }
 
-        // Create account
-        if (databaseHelper.addUser(username, password)) {
-            Toast.makeText(this, "Account created!", Toast.LENGTH_SHORT).show();
-            // Redirect new users to EditProfileActivity
-            startActivity(new Intent(this, EditProfileActivity.class));
-            finish();
-        } else {
-            Toast.makeText(this, "Signup failed", Toast.LENGTH_SHORT).show();
-        }
+    private void checkUsernameAvailability(String username, String password) {
+        databaseReference.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    usernameInputText.setError("Username taken");
+                } else {
+                    createUserAccount(username, password);
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Toast.makeText(SignupActivity.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void createUserAccount(String username, String password) {
+        Map<String, Object> user = new HashMap<>();
+        user.put("username", username);
+        user.put("password", password);
+
+        databaseReference.child(username).setValue(user)
+                .addOnSuccessListener(aVoid -> {
+                    Toast.makeText(this, "Account created!", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(this, EditProfileActivity.class));
+                    finish();
+                })
+                .addOnFailureListener(e -> {
+                    Toast.makeText(this, "Signup failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                });
     }
 }
