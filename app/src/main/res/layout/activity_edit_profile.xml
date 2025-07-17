@@ -24,24 +24,123 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.043" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/timesInputLayout"
+    <TextView
+        android:id="@+id/usernameText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Username"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.121" />
+
+    <TextView
+        android:id="@+id/usernameDisplay"
         android:layout_width="200dp"
         android:layout_height="55dp"
+        android:background="#E0E0E0"
+        android:padding="10dp"
+        android:text="username_here"
+        android:textColor="#666666"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.132"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.155" />
+
+    <TextView
+        android:id="@+id/genderText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gender"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.708"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.121" />
+
+    <RadioGroup
+        android:id="@+id/genderRadioGroup"
+        android:layout_width="120dp"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.859"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.155">
 
+        <RadioButton
+            android:id="@+id/maleRadioButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="M"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/femaleRadioButton"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="F"
+            android:textSize="12sp" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/bioText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bio"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.226" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/bioInputLayout"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.259">
+
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/timesInputText"
+            android:id="@+id/bioInputText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="hint"
+            android:layout_height="match_parent"
+            android:hint="about yourself.."
             android:textSize="12sp" />
     </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/levelText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Level"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
 
     <Spinner
         android:id="@+id/levelSpinner"
@@ -56,15 +155,15 @@
         app:layout_constraintVertical_bias="0.373" />
 
     <TextView
-        android:id="@+id/levelText"
+        android:id="@+id/availableText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Level"
+        android:text="Available"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintHorizontal_bias="0.665"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.333" />
@@ -96,6 +195,20 @@
             android:textSize="12sp" />
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/cityText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="City"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.441" />
+
     <Spinner
         android:id="@+id/citySpinner"
         android:layout_width="150dp"
@@ -109,106 +222,18 @@
         app:layout_constraintVertical_bias="0.488" />
 
     <TextView
-        android:id="@+id/techStackText"
+        android:id="@+id/timesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your current tech stack"
+        android:text="Times"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintHorizontal_bias="0.623"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.554" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/wantToLearnInputLayout"
-        android:layout_width="350dp"
-        android:layout_height="55dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.718">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/wantToLearnInputText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="e.g. React, SQL, Linux"
-            android:textSize="12sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/wantToLearnInputLayout"
-        android:layout_width="350dp"
-        android:layout_height="55dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.602">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/wantToLearnInputText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="e.g. Javascript, Python, Java"
-            android:textSize="12sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/wantToLearnText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="What do you want to learn?"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.145"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.663" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/goalsInputLayout"
-        android:layout_width="350dp"
-        android:layout_height="55dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.459"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.830">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/goalsInputText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:hint="your current and future project ideas"
-            android:textSize="12sp" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <TextView
-        android:id="@+id/goalsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Project Goals"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.092"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.772" />
+        app:layout_constraintVertical_bias="0.441" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/timesInputLayout"
@@ -230,63 +255,21 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/cityText"
+        android:id="@+id/techStackText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="City"
+        android:text="Your current tech stack"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.073"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.441" />
-
-    <TextView
-        android:id="@+id/timesText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Times"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.623"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.441" />
-
-    <TextView
-        android:id="@+id/availableText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Available"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.665"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.333" />
-
-    <TextView
-        android:id="@+id/genderText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Gender"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.708"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121" />
+        app:layout_constraintVertical_bias="0.554" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/bioInputLayout"
+        android:id="@+id/techStackInputLayout"
         android:layout_width="350dp"
         android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -294,71 +277,81 @@
         app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.259">
+        app:layout_constraintVertical_bias="0.602">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/bioInputText"
+            android:id="@+id/techStackInputText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:hint="about yourself.."
+            android:hint="e.g. Javascript, Python, Java"
             android:textSize="12sp" />
-
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/bioText"
+        android:id="@+id/wantToLearnText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bio"
+        android:text="What do you want to learn?"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintHorizontal_bias="0.145"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.226" />
+        app:layout_constraintVertical_bias="0.663" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/wantToLearnInputLayout"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.718">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/wantToLearnInputText"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="e.g. React, SQL, Linux"
+            android:textSize="12sp" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:id="@+id/usernameText"
+        android:id="@+id/goalsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"
+        android:text="Project Goals"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.121" />
+        app:layout_constraintVertical_bias="0.772" />
 
-    <RadioGroup
-        android:id="@+id/availableRadioGroup"
-        android:layout_width="120dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/goalsInputLayout"
+        android:layout_width="350dp"
         android:layout_height="55dp"
-        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.859"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.155">
+        app:layout_constraintVertical_bias="0.830">
 
-        <RadioButton
-            android:id="@+id/radioButton"
-            android:layout_width="50dp"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/goalsInputText"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="M"
+            android:hint="your current and future project ideas"
             android:textSize="12sp" />
-
-        <RadioButton
-            android:id="@+id/radioButton2"
-            android:layout_width="50dp"
-            android:layout_height="match_parent"
-            android:text="F"
-            android:textSize="12sp" />
-    </RadioGroup>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/submitButton"

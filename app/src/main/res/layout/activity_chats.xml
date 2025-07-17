@@ -17,7 +17,7 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/page_heading_bg"
         android:gravity="center"
-        android:text="Homepage"
+        android:text="Chats"
         android:textAlignment="center"
         android:textSize="26sp"
         android:textStyle="bold" />
@@ -36,7 +36,7 @@
             android:background="@drawable/main_bg"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
-            tools:context=".HomepageActivity">
+            tools:context=".ChatsActivity">
 
             <TextView
                 android:id="@+id/textView2"
@@ -92,7 +92,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <!-- Navigation Footer with 5 Icons -->
+    <!-- Navigation Footer with Chats highlighted -->
     <LinearLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
@@ -103,7 +103,6 @@
         android:paddingBottom="8dp"
         android:elevation="8dp">
 
-        <!-- Homepage navigation (highlighted with white rectangle) -->
         <LinearLayout
             android:id="@+id/navHomepage"
             android:layout_width="0dp"
@@ -115,33 +114,18 @@
             android:focusable="true"
             android:background="?android:attr/selectableItemBackground">
 
-            <LinearLayout
-                android:id="@+id/homepageItemContainer"
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_homepage"
+                app:tint="@android:color/black" />
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:paddingLeft="12dp"
-                android:paddingRight="12dp"
-                android:paddingTop="4dp"
-                android:paddingBottom="4dp"
-                android:background="@drawable/footer_selected_bg">
-
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_homepage"
-                    app:tint="@android:color/black" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Homepage"
-                    android:textColor="@android:color/black"
-                    android:textSize="10sp"
-                    android:layout_marginTop="2dp" />
-
-            </LinearLayout>
+                android:text="Homepage"
+                android:textColor="@android:color/black"
+                android:textSize="10sp"
+                android:layout_marginTop="2dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -160,15 +144,13 @@
                 android:layout_height="24dp"
                 android:src="@drawable/ic_groups"
                 app:tint="@android:color/black" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Groups"
                 android:textColor="@android:color/black"
                 android:textSize="10sp"
-                android:layout_marginTop="2dp" />
-
+                android:layout_marginTop="2dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -187,15 +169,13 @@
                 android:layout_height="24dp"
                 android:src="@drawable/ic_dashboard"
                 app:tint="@android:color/black" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dashboard"
                 android:textColor="@android:color/black"
                 android:textSize="10sp"
-                android:layout_marginTop="2dp" />
-
+                android:layout_marginTop="2dp"/>
         </LinearLayout>
 
         <LinearLayout
@@ -214,17 +194,16 @@
                 android:layout_height="24dp"
                 android:src="@drawable/ic_notifications"
                 app:tint="@android:color/black" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Notifications"
                 android:textColor="@android:color/black"
                 android:textSize="10sp"
-                android:layout_marginTop="2dp" />
-
+                android:layout_marginTop="2dp"/>
         </LinearLayout>
 
+        <!-- Chats navigation (highlighted) -->
         <LinearLayout
             android:id="@+id/navChats"
             android:layout_width="0dp"
@@ -236,22 +215,31 @@
             android:focusable="true"
             android:background="?android:attr/selectableItemBackground">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_chats"
-                app:tint="@android:color/black" />
-
-            <TextView
+            <LinearLayout
+                android:id="@+id/chatsItemContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chats"
-                android:textColor="@android:color/black"
-                android:textSize="10sp"
-                android:layout_marginTop="2dp" />
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
+                android:background="@drawable/footer_selected_bg">
 
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_chats"
+                    app:tint="@android:color/black" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chats"
+                    android:textColor="@android:color/black"
+                    android:textSize="10sp"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
-
 </LinearLayout>

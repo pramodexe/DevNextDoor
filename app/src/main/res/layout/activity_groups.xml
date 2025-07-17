@@ -8,7 +8,7 @@
 
     <!-- Sticky Header -->
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/groupsHeader"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginStart="16dp"
@@ -17,12 +17,12 @@
         android:layout_marginBottom="8dp"
         android:background="@drawable/page_heading_bg"
         android:gravity="center"
-        android:text="Homepage"
+        android:text="Groups"
         android:textAlignment="center"
         android:textSize="26sp"
         android:textStyle="bold" />
 
-    <!-- Scrollable content area -->
+    <!-- Scrollable content area (replace with your groups content) -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -30,13 +30,13 @@
         android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/main"
+            android:id="@+id/groupsMain"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/main_bg"
             android:paddingTop="16dp"
             android:paddingBottom="16dp"
-            tools:context=".HomepageActivity">
+            tools:context=".GroupsActivity">
 
             <TextView
                 android:id="@+id/textView2"
@@ -92,7 +92,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 
-    <!-- Navigation Footer with 5 Icons -->
+    <!-- Navigation Footer with 5 Icons (Groups highlighted) -->
     <LinearLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
@@ -103,7 +103,7 @@
         android:paddingBottom="8dp"
         android:elevation="8dp">
 
-        <!-- Homepage navigation (highlighted with white rectangle) -->
+        <!-- Homepage navigation -->
         <LinearLayout
             android:id="@+id/navHomepage"
             android:layout_width="0dp"
@@ -115,8 +115,35 @@
             android:focusable="true"
             android:background="?android:attr/selectableItemBackground">
 
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_homepage"
+                app:tint="@android:color/black" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Homepage"
+                android:textColor="@android:color/black"
+                android:textSize="10sp"
+                android:layout_marginTop="2dp" />
+        </LinearLayout>
+
+        <!-- Groups navigation (highlighted with background) -->
+        <LinearLayout
+            android:id="@+id/navGroups"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackground">
+
             <LinearLayout
-                android:id="@+id/homepageItemContainer"
+                android:id="@+id/groupsItemContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -130,45 +157,17 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_homepage"
+                    android:src="@drawable/ic_groups"
                     app:tint="@android:color/black" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Homepage"
+                    android:text="Groups"
                     android:textColor="@android:color/black"
                     android:textSize="10sp"
                     android:layout_marginTop="2dp" />
-
             </LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navGroups"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
-            android:clickable="true"
-            android:focusable="true"
-            android:background="?android:attr/selectableItemBackground">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_groups"
-                app:tint="@android:color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Groups"
-                android:textColor="@android:color/black"
-                android:textSize="10sp"
-                android:layout_marginTop="2dp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -195,7 +194,6 @@
                 android:textColor="@android:color/black"
                 android:textSize="10sp"
                 android:layout_marginTop="2dp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -222,7 +220,6 @@
                 android:textColor="@android:color/black"
                 android:textSize="10sp"
                 android:layout_marginTop="2dp" />
-
         </LinearLayout>
 
         <LinearLayout
@@ -249,9 +246,6 @@
                 android:textColor="@android:color/black"
                 android:textSize="10sp"
                 android:layout_marginTop="2dp" />
-
         </LinearLayout>
-
     </LinearLayout>
-
 </LinearLayout>

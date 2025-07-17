@@ -5,21 +5,23 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import com.google.android.material.textfield.TextInputEditText;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.activity.EdgeToEdge;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.HashMap;
 import java.util.Map;
 
-// Handles user registration
 public class SignupActivity extends AppCompatActivity {
 
     private TextInputEditText usernameInputText;
@@ -104,6 +106,7 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
+    // THIS METHOD MUST BE INSIDE THE CLASS
     private void createUserAccount(String username, String password) {
         Map<String, Object> user = new HashMap<>();
         user.put("username", username);
@@ -112,7 +115,9 @@ public class SignupActivity extends AppCompatActivity {
         databaseReference.child(username).setValue(user)
                 .addOnSuccessListener(aVoid -> {
                     Toast.makeText(this, "Account created!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(this, EditProfileActivity.class));
+                    Intent intent = new Intent(this, EditProfileActivity.class);
+                    intent.putExtra("username", username); // Pass username to EditProfileActivity
+                    startActivity(intent);
                     finish();
                 })
                 .addOnFailureListener(e -> {

@@ -34,6 +34,7 @@ public class WelcomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Navigate to GetStartedActivity
                 Intent intent = new Intent(WelcomeActivity.this, GetStartedActivity.class);
+                //Intent intent = new Intent(WelcomeActivity.this, HomepageActivity.class);
                 startActivity(intent);
             }
         });

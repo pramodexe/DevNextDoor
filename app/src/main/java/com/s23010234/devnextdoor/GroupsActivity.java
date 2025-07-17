@@ -11,15 +11,15 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class HomepageActivity extends AppCompatActivity {
+public class GroupsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_homepage);
+        setContentView(R.layout.activity_groups);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.groupsMain), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -36,26 +36,26 @@ public class HomepageActivity extends AppCompatActivity {
         LinearLayout navChats = findViewById(R.id.navChats);
 
         navHomepage.setOnClickListener(v -> {
-            Toast.makeText(HomepageActivity.this, "Already on Homepage", Toast.LENGTH_SHORT).show();
-        });
-
-        navGroups.setOnClickListener(v -> {
-            Intent intent = new Intent(HomepageActivity.this, GroupsActivity.class);
+            Intent intent = new Intent(GroupsActivity.this, HomepageActivity.class);
             startActivity(intent);
         });
 
+        navGroups.setOnClickListener(v -> {
+            Toast.makeText(GroupsActivity.this, "Already on Groups", Toast.LENGTH_SHORT).show();
+        });
+
         navDashboard.setOnClickListener(v -> {
-            Intent intent = new Intent(HomepageActivity.this, DashboardActivity.class);
+            Intent intent = new Intent(GroupsActivity.this, DashboardActivity.class);
             startActivity(intent);
         });
 
         navNotifications.setOnClickListener(v -> {
-            Intent intent = new Intent(HomepageActivity.this, NotificationsActivity.class);
+            Intent intent = new Intent(GroupsActivity.this, NotificationsActivity.class);
             startActivity(intent);
         });
 
         navChats.setOnClickListener(v -> {
-            Intent intent = new Intent(HomepageActivity.this, ChatsActivity.class);
+            Intent intent = new Intent(GroupsActivity.this, ChatsActivity.class);
             startActivity(intent);
         });
     }
