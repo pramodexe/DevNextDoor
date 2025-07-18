@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/main_bg">
+    android:background="@drawable/main_bg"
+    tools:context=".EditProfileActivity">
 
     <!-- Sticky Header -->
     <TextView
@@ -22,356 +24,308 @@
         android:textSize="26sp"
         android:textStyle="bold" />
 
-    <!-- Scrollable Content Area -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:fillViewport="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/main"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            tools:context=".EditProfileActivity">
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:paddingBottom="80dp">
 
             <!-- Username Display -->
             <TextView
                 android:id="@+id/usernameDisplay"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Username"
-                android:textColor="@android:color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:gravity="center"
+                android:layout_marginBottom="24dp" />
 
             <!-- Gender Selection -->
             <TextView
-                android:id="@+id/genderLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:text="Gender"
-                android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/usernameDisplay"
-                android:layout_marginStart="16dp" />
+                android:layout_marginBottom="8dp" />
 
             <RadioGroup
                 android:id="@+id/genderRadioGroup"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/genderLabel">
+                android:layout_marginBottom="16dp">
 
                 <RadioButton
                     android:id="@+id/maleRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Male"
-                    android:textColor="@android:color/black" />
+                    android:layout_marginEnd="24dp" />
 
                 <RadioButton
                     android:id="@+id/femaleRadioButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:text="Female"
-                    android:textColor="@android:color/black" />
+                    android:text="Female" />
+
             </RadioGroup>
+
+            <!-- Profile Picture Selection -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Profile Picture"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp" />
+
+            <Spinner
+                android:id="@+id/profilePictureSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:enabled="false" />
 
             <!-- Bio -->
             <TextView
-                android:id="@+id/bioLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
                 android:text="Bio"
-                android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/genderRadioGroup" />
+                android:layout_marginBottom="8dp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/bioInputText"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/input_field_border"
-                android:gravity="top"
-                android:hint="Tell us about yourself"
-                android:inputType="textMultiLine"
-                android:paddingStart="12dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="12dp"
-                android:textColor="@android:color/black"
-                android:textColorHint="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bioLabel" />
-
-            <!-- Level -->
-            <TextView
-                android:id="@+id/levelLabel"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="Level"
-                android:textColor="@android:color/black"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/bioInputText"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:hint="Tell us about yourself"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:maxLines="9" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Education Level -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Education Level"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bioInputText" />
+                android:layout_marginBottom="8dp" />
 
             <Spinner
                 android:id="@+id/levelSpinner"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/input_field_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/levelLabel" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp" />
 
             <!-- City -->
             <TextView
-                android:id="@+id/cityLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
                 android:text="City"
-                android:textColor="@android:color/black"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/levelSpinner" />
+                android:layout_marginBottom="8dp" />
 
             <Spinner
                 android:id="@+id/citySpinner"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/input_field_border"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cityLabel" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp" />
 
             <!-- Availability -->
             <TextView
-                android:id="@+id/availabilityLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="Availability"
-                android:textColor="@android:color/black"
+                android:text="Availability (Select all that apply)"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/citySpinner" />
+                android:layout_marginBottom="8dp" />
 
-            <RadioGroup
-                android:id="@+id/availableRadioGroup"
-                android:layout_width="0dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
                 android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/availabilityLabel">
+                android:layout_marginBottom="16dp">
 
-                <RadioButton
-                    android:id="@+id/radioButton"
-                    android:layout_width="wrap_content"
+                <CheckBox
+                    android:id="@+id/weekdayCheckBox"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="Weekdays"
-                    android:textColor="@android:color/black" />
+                    android:layout_weight="1"
+                    android:text="Weekdays" />
 
-                <RadioButton
-                    android:id="@+id/radioButton2"
-                    android:layout_width="wrap_content"
+                <CheckBox
+                    android:id="@+id/weekendCheckBox"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:text="Weekends"
-                    android:textColor="@android:color/black" />
-            </RadioGroup>
+                    android:layout_weight="1"
+                    android:text="Weekends" />
 
-            <!-- Times -->
+            </LinearLayout>
+
+            <!-- Time of Day -->
             <TextView
-                android:id="@+id/timesLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="Preferred Times"
-                android:textColor="@android:color/black"
+                android:text="Preferred Time of Day"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/availableRadioGroup" />
+                android:layout_marginBottom="8dp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/timesInputText"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/input_field_border"
-                android:hint="e.g., 9AM-12PM, 2PM-5PM"
-                android:inputType="text"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:textColor="@android:color/black"
-                android:textColorHint="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/timesLabel" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <CheckBox
+                    android:id="@+id/morningCheckBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Morning" />
+
+                <CheckBox
+                    android:id="@+id/dayCheckBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Day" />
+
+                <CheckBox
+                    android:id="@+id/eveningCheckBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Evening" />
+
+                <CheckBox
+                    android:id="@+id/nightCheckBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Night" />
+
+            </LinearLayout>
 
             <!-- Tech Stack -->
             <TextView
-                android:id="@+id/techStackLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="Tech Stack"
-                android:textColor="@android:color/black"
+                android:text="Your current tech stack"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/timesInputText" />
+                android:layout_marginBottom="8dp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/techStackInputText"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/input_field_border"
-                android:hint="e.g., Java, Python, React"
-                android:inputType="text"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:textColor="@android:color/black"
-                android:textColorHint="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/techStackLabel" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/techStackInputText"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:hint="e.g., Java, Python, React"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:maxLines="6" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Want to Learn -->
             <TextView
-                android:id="@+id/wantToLearnLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="Want to Learn"
-                android:textColor="@android:color/black"
+                android:text="What do you want to learn?"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/techStackInputText" />
+                android:layout_marginBottom="8dp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/wantToLearnInputText"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/input_field_border"
-                android:hint="e.g., Machine Learning, Web Development"
-                android:inputType="text"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:textColor="@android:color/black"
-                android:textColorHint="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/wantToLearnLabel" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/wantToLearnInputText"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:hint="e.g., Spring Boot, MERN"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:maxLines="6" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Goals -->
             <TextView
-                android:id="@+id/goalsLabel"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="Goals"
-                android:textColor="@android:color/black"
+                android:text="Your project goals"
                 android:textSize="16sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/wantToLearnInputText" />
+                android:layout_marginBottom="8dp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/goalsInputText"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
-                android:background="@drawable/input_field_border"
-                android:gravity="top"
-                android:hint="Describe your learning goals"
-                android:inputType="textMultiLine"
-                android:paddingStart="12dp"
-                android:paddingTop="12dp"
-                android:paddingEnd="12dp"
-                android:textColor="@android:color/black"
-                android:textColorHint="@android:color/darker_gray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/goalsLabel" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/goalsInputText"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:hint="What projects do you wish to do?"
+                    android:gravity="top"
+                    android:inputType="textMultiLine"
+                    android:maxLines="9" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <!-- Submit Button -->
-            <Button
-                android:id="@+id/submitButton"
-                android:layout_width="200dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="14dp"
-                android:backgroundTint="#F4F0D5"
-                android:text="Save Profile"
-                android:textColor="#000000"
-                android:textSize="18sp"
-                android:textStyle="bold"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                app:cornerRadius="8sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/goalsInputText"
-                app:strokeColor="#000000"
-                app:strokeWidth="1dp" />
+                android:layout_marginTop="8dp">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <Button
+                    android:id="@+id/submitButton"
+                    android:layout_width="200dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="#F4F0D5"
+                    android:text="Save Profile"
+                    android:textColor="#000000"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    app:cornerRadius="8sp"
+                    app:strokeColor="#000000"
+                    app:strokeWidth="1dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
     </ScrollView>
 
     <!-- Sticky Footer -->

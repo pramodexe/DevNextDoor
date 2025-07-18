@@ -3,9 +3,13 @@ package com.s23010234.devnextdoor;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -22,6 +26,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -32,11 +37,12 @@ public class EditProfileActivity extends AppCompatActivity {
     private TextView usernameDisplay;
     private RadioGroup genderRadioGroup;
     private RadioButton maleRadioButton, femaleRadioButton;
+    private Spinner profilePictureSpinner;
     private TextInputEditText bioInputText;
     private Spinner levelSpinner, citySpinner;
-    private RadioGroup availableRadioGroup;
-    private RadioButton weekdayRadioButton, weekendRadioButton;
-    private TextInputEditText timesInputText, techStackInputText, wantToLearnInputText, goalsInputText;
+    private CheckBox weekdayCheckBox, weekendCheckBox;
+    private CheckBox morningCheckBox, dayCheckBox, eveningCheckBox, nightCheckBox;
+    private TextInputEditText techStackInputText, wantToLearnInputText, goalsInputText;
     private Button submitButton;
     private DatabaseReference databaseReference;
     private String username;
@@ -47,7 +53,6 @@ public class EditProfileActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_edit_profile);
 
-        // Updated to use the scrollable content container instead of main
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -59,6 +64,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         initializeViews();
         setupSpinners();
+        setupGenderListener();
         setupSubmitButton();
     }
 
@@ -67,13 +73,16 @@ public class EditProfileActivity extends AppCompatActivity {
         genderRadioGroup = findViewById(R.id.genderRadioGroup);
         maleRadioButton = findViewById(R.id.maleRadioButton);
         femaleRadioButton = findViewById(R.id.femaleRadioButton);
+        profilePictureSpinner = findViewById(R.id.profilePictureSpinner);
         bioInputText = findViewById(R.id.bioInputText);
         levelSpinner = findViewById(R.id.levelSpinner);
         citySpinner = findViewById(R.id.citySpinner);
-        availableRadioGroup = findViewById(R.id.availableRadioGroup);
-        weekdayRadioButton = findViewById(R.id.radioButton);
-        weekendRadioButton = findViewById(R.id.radioButton2);
-        timesInputText = findViewById(R.id.timesInputText);
+        weekdayCheckBox = findViewById(R.id.weekdayCheckBox);
+        weekendCheckBox = findViewById(R.id.weekendCheckBox);
+        morningCheckBox = findViewById(R.id.morningCheckBox);
+        dayCheckBox = findViewById(R.id.dayCheckBox);
+        eveningCheckBox = findViewById(R.id.eveningCheckBox);
+        nightCheckBox = findViewById(R.id.nightCheckBox);
         techStackInputText = findViewById(R.id.techStackInputText);
         wantToLearnInputText = findViewById(R.id.wantToLearnInputText);
         goalsInputText = findViewById(R.id.goalsInputText);
@@ -96,7 +105,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 "Intern (Undergraduate / Graduate)",
                 "Professional / Employed", "Other"
         );
-
         ArrayAdapter<String> levelAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, levelOptions);
         levelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         levelSpinner.setAdapter(levelAdapter);
@@ -110,10 +118,59 @@ public class EditProfileActivity extends AppCompatActivity {
                 "Mullaitivu", "Nuwara Eliya", "Polonnaruwa", "Puttalam", "Ratnapura",
                 "Trincomalee", "Vavuniya"
         );
-
         ArrayAdapter<String> cityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cityOptions);
         cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         citySpinner.setAdapter(cityAdapter);
+
+        // Profile Picture Spinner Setup (initially empty)
+        setupProfilePictureSpinner("");
+    }
+
+    private void setupGenderListener() {
+        genderRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.maleRadioButton) {
+                setupProfilePictureSpinner("Male");
+            } else if (checkedId == R.id.femaleRadioButton) {
+                setupProfilePictureSpinner("Female");
+            }
+        });
+    }
+
+    private void setupProfilePictureSpinner(String gender) {
+        if (gender.equals("Male")) {
+            ProfilePictureItem[] items = {
+                    new ProfilePictureItem("Select Profile Picture", 0),
+                    new ProfilePictureItem("Male Avatar 1", getResources().getIdentifier("male_1", "drawable", getPackageName())),
+                    new ProfilePictureItem("Male Avatar 2", getResources().getIdentifier("male_2", "drawable", getPackageName())),
+                    new ProfilePictureItem("Male Avatar 3", getResources().getIdentifier("male_3", "drawable", getPackageName())),
+                    new ProfilePictureItem("Male Avatar 4", getResources().getIdentifier("male_4", "drawable", getPackageName())),
+                    new ProfilePictureItem("Male Avatar 5", getResources().getIdentifier("male_5", "drawable", getPackageName())),
+                    new ProfilePictureItem("Male Avatar 6", getResources().getIdentifier("male_6", "drawable", getPackageName()))
+            };
+            ProfilePictureAdapter adapter = new ProfilePictureAdapter(this, items);
+            profilePictureSpinner.setAdapter(adapter);
+        } else if (gender.equals("Female")) {
+            ProfilePictureItem[] items = {
+                    new ProfilePictureItem("Select Profile Picture", 0),
+                    new ProfilePictureItem("Female Avatar 1", getResources().getIdentifier("female_1", "drawable", getPackageName())),
+                    new ProfilePictureItem("Female Avatar 2", getResources().getIdentifier("female_2", "drawable", getPackageName())),
+                    new ProfilePictureItem("Female Avatar 3", getResources().getIdentifier("female_3", "drawable", getPackageName())),
+                    new ProfilePictureItem("Female Avatar 4", getResources().getIdentifier("female_4", "drawable", getPackageName())),
+                    new ProfilePictureItem("Female Avatar 5", getResources().getIdentifier("female_5", "drawable", getPackageName())),
+                    new ProfilePictureItem("Female Avatar 6", getResources().getIdentifier("female_6", "drawable", getPackageName()))
+            };
+            ProfilePictureAdapter adapter = new ProfilePictureAdapter(this, items);
+            profilePictureSpinner.setAdapter(adapter);
+        } else {
+            ProfilePictureItem[] items = {
+                    new ProfilePictureItem("Select Profile Picture", 0)
+            };
+            ProfilePictureAdapter adapter = new ProfilePictureAdapter(this, items);
+            profilePictureSpinner.setAdapter(adapter);
+        }
+
+        // Enable/disable spinner based on gender selection
+        profilePictureSpinner.setEnabled(!gender.isEmpty());
     }
 
     private void setupSubmitButton() {
@@ -121,79 +178,124 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void handleSubmit() {
+        // Clear any existing errors first
+        clearErrors();
+
         // Get gender selection
         String gender = "";
         int genderId = genderRadioGroup.getCheckedRadioButtonId();
         if (genderId == R.id.maleRadioButton) gender = "Male";
         else if (genderId == R.id.femaleRadioButton) gender = "Female";
 
-        // Get availability selection
-        String availability = "";
-        int availabilityId = availableRadioGroup.getCheckedRadioButtonId();
-        if (availabilityId == R.id.radioButton) availability = "Weekdays";
-        else if (availabilityId == R.id.radioButton2) availability = "Weekends";
+        // Get profile picture selection
+        ProfilePictureItem selectedItem = (ProfilePictureItem) profilePictureSpinner.getSelectedItem();
+        String profilePicture = selectedItem != null ? selectedItem.getName() : "";
+
+        // Get availability selections (multiple checkboxes)
+        List<String> availabilityList = new ArrayList<>();
+        if (weekdayCheckBox.isChecked()) availabilityList.add("Weekdays");
+        if (weekendCheckBox.isChecked()) availabilityList.add("Weekends");
+
+        String availability = String.join(", ", availabilityList);
+
+        // Get time of day selections (multiple checkboxes)
+        List<String> timeOfDayList = new ArrayList<>();
+        if (morningCheckBox.isChecked()) timeOfDayList.add("Morning");
+        if (dayCheckBox.isChecked()) timeOfDayList.add("Day");
+        if (eveningCheckBox.isChecked()) timeOfDayList.add("Evening");
+        if (nightCheckBox.isChecked()) timeOfDayList.add("Night");
+
+        String timeOfDay = String.join(", ", timeOfDayList);
 
         // Get text inputs
         String bio = bioInputText.getText().toString().trim();
         String level = levelSpinner.getSelectedItem().toString();
         String city = citySpinner.getSelectedItem().toString();
-        String times = timesInputText.getText().toString().trim();
         String techStack = techStackInputText.getText().toString().trim();
         String wantToLearn = wantToLearnInputText.getText().toString().trim();
         String goals = goalsInputText.getText().toString().trim();
 
-        // Validation
+        // Validation with both error indicators and toast messages
         if (TextUtils.isEmpty(gender)) {
             toast("Please select a gender");
             return;
         }
+
+        if ("Select Profile Picture".equals(profilePicture)) {
+            toast("Please select a profile picture");
+            return;
+        }
+
         if (TextUtils.isEmpty(bio)) {
             bioInputText.setError("Bio is required");
+            toast("Bio field cannot be empty");
+            bioInputText.requestFocus();
             return;
         }
+
         if ("Select Level".equals(level)) {
-            toast("Please select a level");
+            toast("Please select your education level");
             return;
         }
+
         if ("Select City".equals(city)) {
-            toast("Please select a city");
+            toast("Please select your city");
             return;
         }
-        if (TextUtils.isEmpty(availability)) {
-            toast("Please select availability");
+
+        if (availabilityList.isEmpty()) {
+            toast("Please select at least one availability option");
             return;
         }
-        if (TextUtils.isEmpty(times)) {
-            timesInputText.setError("Times field is required");
+
+        if (timeOfDayList.isEmpty()) {
+            toast("Please select at least one preferred time of day");
             return;
         }
+
         if (TextUtils.isEmpty(techStack)) {
             techStackInputText.setError("Tech stack is required");
+            toast("Please enter your tech stack");
+            techStackInputText.requestFocus();
             return;
         }
+
         if (TextUtils.isEmpty(wantToLearn)) {
             wantToLearnInputText.setError("Want to learn field is required");
+            toast("Please specify what you want to learn");
+            wantToLearnInputText.requestFocus();
             return;
         }
+
         if (TextUtils.isEmpty(goals)) {
             goalsInputText.setError("Goals field is required");
+            toast("Please enter your goals");
+            goalsInputText.requestFocus();
             return;
         }
 
         // Save profile data
-        saveProfileData(gender, bio, level, city, availability, times, techStack, wantToLearn, goals);
+        saveProfileData(gender, profilePicture, bio, level, city, availability, timeOfDay, techStack, wantToLearn, goals);
     }
 
-    private void saveProfileData(String gender, String bio, String level, String city,
-                                 String availability, String times, String techStack,
+    private void clearErrors() {
+        bioInputText.setError(null);
+        techStackInputText.setError(null);
+        wantToLearnInputText.setError(null);
+        goalsInputText.setError(null);
+    }
+
+    private void saveProfileData(String gender, String profilePicture, String bio, String level, String city,
+                                 String availability, String timeOfDay, String techStack,
                                  String wantToLearn, String goals) {
         Map<String, Object> profileData = new HashMap<>();
         profileData.put("gender", gender);
+        profileData.put("profilePicture", getProfilePictureFileName(gender, profilePicture));
         profileData.put("bio", bio);
         profileData.put("level", level);
         profileData.put("city", city);
         profileData.put("availability", availability);
-        profileData.put("times", times);
+        profileData.put("timeOfDay", timeOfDay);
         profileData.put("techStack", techStack);
         profileData.put("wantToLearn", wantToLearn);
         profileData.put("goals", goals);
@@ -208,7 +310,95 @@ public class EditProfileActivity extends AppCompatActivity {
                 .addOnFailureListener(e -> toast("Failed to update profile: " + e.getMessage()));
     }
 
+    private String getProfilePictureFileName(String gender, String profilePicture) {
+        // Convert display name to actual file name
+        if (gender.equals("Male")) {
+            switch (profilePicture) {
+                case "Male Avatar 1": return "male_1.png";
+                case "Male Avatar 2": return "male_2.png";
+                case "Male Avatar 3": return "male_3.png";
+                case "Male Avatar 4": return "male_4.png";
+                case "Male Avatar 5": return "male_5.png";
+                case "Male Avatar 6": return "male_6.png";
+            }
+        } else if (gender.equals("Female")) {
+            switch (profilePicture) {
+                case "Female Avatar 1": return "female_1.png";
+                case "Female Avatar 2": return "female_2.png";
+                case "Female Avatar 3": return "female_3.png";
+                case "Female Avatar 4": return "female_4.png";
+                case "Female Avatar 5": return "female_5.png";
+                case "Female Avatar 6": return "female_6.png";
+            }
+        }
+        return "";
+    }
+
     private void toast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    // Custom data class for profile picture items
+    private static class ProfilePictureItem {
+        private String name;
+        private int imageResourceId;
+
+        public ProfilePictureItem(String name, int imageResourceId) {
+            this.name = name;
+            this.imageResourceId = imageResourceId;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public int getImageResourceId() {
+            return imageResourceId;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+    }
+
+    // Custom adapter for profile picture spinner with image preview
+    private static class ProfilePictureAdapter extends ArrayAdapter<ProfilePictureItem> {
+        public ProfilePictureAdapter(EditProfileActivity context, ProfilePictureItem[] items) {
+            super(context, 0, items);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            return createItemView(position, convertView, parent);
+        }
+
+        @Override
+        public View getDropDownView(int position, View convertView, ViewGroup parent) {
+            return createItemView(position, convertView, parent);
+        }
+
+        private View createItemView(int position, View convertView, ViewGroup parent) {
+            if (convertView == null) {
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.spinner_profile_picture_item, parent, false);
+            }
+
+            ProfilePictureItem item = getItem(position);
+            if (item != null) {
+                ImageView imageView = convertView.findViewById(R.id.profilePictureImageView);
+                TextView textView = convertView.findViewById(R.id.profilePictureTextView);
+
+                textView.setText(item.getName());
+
+                if (item.getImageResourceId() != 0) {
+                    imageView.setImageResource(item.getImageResourceId());
+                    imageView.setVisibility(View.VISIBLE);
+                } else {
+                    imageView.setVisibility(View.GONE);
+                }
+            }
+
+            return convertView;
+        }
     }
 }
