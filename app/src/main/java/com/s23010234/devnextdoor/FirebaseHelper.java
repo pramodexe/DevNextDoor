@@ -75,4 +75,11 @@ public class FirebaseHelper {
             }
         });
     }
+
+    // Delete user account from database
+    public void deleteUser(String username, DatabaseCallback callback) {
+        databaseReference.child(username).removeValue()
+                .addOnSuccessListener(aVoid -> callback.onSuccess(true))
+                .addOnFailureListener(e -> callback.onError(e.getMessage()));
+    }
 }

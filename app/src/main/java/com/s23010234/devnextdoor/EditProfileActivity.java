@@ -1,6 +1,7 @@
 package com.s23010234.devnextdoor;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -52,7 +53,6 @@ public class EditProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_edit_profile);
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -195,7 +195,6 @@ public class EditProfileActivity extends AppCompatActivity {
         List<String> availabilityList = new ArrayList<>();
         if (weekdayCheckBox.isChecked()) availabilityList.add("Weekdays");
         if (weekendCheckBox.isChecked()) availabilityList.add("Weekends");
-
         String availability = String.join(", ", availabilityList);
 
         // Get time of day selections (multiple checkboxes)
@@ -204,7 +203,6 @@ public class EditProfileActivity extends AppCompatActivity {
         if (dayCheckBox.isChecked()) timeOfDayList.add("Day");
         if (eveningCheckBox.isChecked()) timeOfDayList.add("Evening");
         if (nightCheckBox.isChecked()) timeOfDayList.add("Night");
-
         String timeOfDay = String.join(", ", timeOfDayList);
 
         // Get text inputs
@@ -304,6 +302,13 @@ public class EditProfileActivity extends AppCompatActivity {
         databaseReference.child(username).updateChildren(profileData)
                 .addOnSuccessListener(aVoid -> {
                     toast("Profile updated successfully!");
+
+                    // Save username to SharedPreferences
+                    SharedPreferences sharedPreferences = getSharedPreferences("DevNextDoorPrefs", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                    editor.putString("username", username);
+                    editor.apply();
+
                     startActivity(new Intent(this, HomepageActivity.class).putExtra("username", username));
                     finish();
                 })

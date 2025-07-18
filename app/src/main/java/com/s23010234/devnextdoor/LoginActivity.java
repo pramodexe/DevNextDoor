@@ -1,12 +1,15 @@
 package com.s23010234.devnextdoor;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -86,6 +89,13 @@ public class LoginActivity extends AppCompatActivity {
                     String storedPassword = dataSnapshot.child("password").getValue(String.class);
                     if (storedPassword != null && storedPassword.equals(password)) {
                         Toast.makeText(LoginActivity.this, "Login successful!", Toast.LENGTH_SHORT).show();
+
+                        // Save username to SharedPreferences
+                        SharedPreferences sharedPreferences = getSharedPreferences("DevNextDoorPrefs", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sharedPreferences.edit();
+                        editor.putString("username", username);
+                        editor.apply();
+
                         // Navigate to HomepageActivity after successful login
                         Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                         intent.putExtra("isNewUser", false);
