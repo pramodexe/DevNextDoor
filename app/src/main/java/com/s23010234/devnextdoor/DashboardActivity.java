@@ -19,14 +19,15 @@ public class DashboardActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_dashboard);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.dashboardContent), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
         setupNavigationClicks();
-    }
+        setupDashboardBoxClicks();
+    } // Added missing closing brace
 
     private void setupNavigationClicks() {
         LinearLayout navHomepage = findViewById(R.id.navHomepage);
@@ -59,4 +60,32 @@ public class DashboardActivity extends AppCompatActivity {
             startActivity(intent);
         });
     }
+
+    private void setupDashboardBoxClicks() {
+        findViewById(R.id.boxProfile).setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, ProfileActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.boxSettings).setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.boxFavourites).setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, FavouritesActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.boxSearch).setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, SearchActivity.class);
+            startActivity(intent);
+        });
+
+        findViewById(R.id.boxMeetFriends).setOnClickListener(v -> {
+            Intent intent = new Intent(DashboardActivity.this, MeetFriendsActivity.class);
+            startActivity(intent);
+        });
+    }
+
 }

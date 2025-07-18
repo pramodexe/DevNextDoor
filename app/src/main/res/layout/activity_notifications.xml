@@ -117,7 +117,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_homepage"
+                android:src="@drawable/ic_nav_homepage"
                 app:tint="@android:color/black" />
             <TextView
                 android:layout_width="wrap_content"
@@ -142,7 +142,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_groups"
+                android:src="@drawable/ic_nav_groups"
                 app:tint="@android:color/black" />
             <TextView
                 android:layout_width="wrap_content"
@@ -167,7 +167,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_dashboard"
+                android:src="@drawable/ic_nav_dashboard"
                 app:tint="@android:color/black" />
             <TextView
                 android:layout_width="wrap_content"
@@ -205,7 +205,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_notifications"
+                    android:src="@drawable/ic_nav_notifications"
                     app:tint="@android:color/black" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -231,7 +231,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_chats"
+                android:src="@drawable/ic_nav_chats"
                 app:tint="@android:color/black" />
             <TextView
                 android:layout_width="wrap_content"

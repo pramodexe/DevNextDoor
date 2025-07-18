@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/main_bg">
 
     <!-- Sticky Header -->
     <TextView
@@ -22,77 +23,198 @@
         android:textSize="26sp"
         android:textStyle="bold" />
 
-    <!-- Scrollable content area -->
+    <!-- Dashboard content: boxes grid -->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:fillViewport="true">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/main"
+        <LinearLayout
+            android:id="@+id/dashboardContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/main_bg"
-            android:paddingTop="16dp"
-            android:paddingBottom="16dp"
-            tools:context=".DashboardActivity">
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="40dp"
+            android:paddingBottom="40dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp">
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+            <!-- Row 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="156dp"
-                android:text="TextView"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.322"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="24dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/boxProfile"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/box_bg"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_dash_profile"
+                        app:tint="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Profile"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/boxSettings"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/box_bg"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_dash_settings"
+                        app:tint="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Settings"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Row 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="300dp"
-                android:text="TextView"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.898"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="24dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/boxFavourites"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/box_bg"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_dash_favourites"
+                        app:tint="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Favourites"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/boxSearch"
+                    android:layout_width="0dp"
+                    android:layout_height="110dp"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="12dp"
+                    android:background="@drawable/box_bg"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_dash_search"
+                        app:tint="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Search"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Row 3 (single box, centered) -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="168dp"
-                android:text="TextView"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.322"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp">
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="100dp"
-                android:text="TextView"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView4" />
+                <LinearLayout
+                    android:id="@+id/boxMeetFriends"
+                    android:layout_width="180dp"
+                    android:layout_height="110dp"
+                    android:background="@drawable/box_bg"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:src="@drawable/ic_dash_meet_friends"
+                        app:tint="@android:color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Meet Friends"
+                        android:textColor="@android:color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="10dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
     </ScrollView>
 
-    <!-- Navigation Footer with Dashboard highlighted -->
+    <!-- Footer: unchanged, with Dashboard highlighted as shown previously -->
     <LinearLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
@@ -117,7 +239,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_homepage"
+                android:src="@drawable/ic_nav_homepage"
                 app:tint="@android:color/black" />
             <TextView
                 android:layout_width="wrap_content"
@@ -127,7 +249,6 @@
                 android:textSize="10sp"
                 android:layout_marginTop="2dp"/>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/navGroups"
             android:layout_width="0dp"
@@ -142,7 +263,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_groups"
+                android:src="@drawable/ic_nav_groups"
                 app:tint="@android:color/black" />
             <TextView
                 android:layout_width="wrap_content"
@@ -152,8 +273,7 @@
                 android:textSize="10sp"
                 android:layout_marginTop="2dp"/>
         </LinearLayout>
-
-        <!-- Dashboard navigation (highlighted) -->
+        <!-- Highlighted dashboard item -->
         <LinearLayout
             android:id="@+id/navDashboard"
             android:layout_width="0dp"
@@ -180,7 +300,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_dashboard"
+                    android:src="@drawable/ic_nav_dashboard"
                     app:tint="@android:color/black" />
                 <TextView
                     android:layout_width="wrap_content"
@@ -191,7 +311,6 @@
                     android:layout_marginTop="2dp"/>
             </LinearLayout>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/navNotifications"
             android:layout_width="0dp"
@@ -206,7 +325,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_notifications"
+                android:src="@drawable/ic_nav_notifications"
                 app:tint="@android:color/black" />
             <TextView
                 android:layout_width="wrap_content"
@@ -216,7 +335,6 @@
                 android:textSize="10sp"
                 android:layout_marginTop="2dp"/>
         </LinearLayout>
-
         <LinearLayout
             android:id="@+id/navChats"
             android:layout_width="0dp"
@@ -231,7 +349,7 @@
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_chats"
+                android:src="@drawable/ic_nav_chats"
                 app:tint="@android:color/black" />
             <TextView
                 android:layout_width="wrap_content"

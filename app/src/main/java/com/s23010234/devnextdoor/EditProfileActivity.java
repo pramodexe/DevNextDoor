@@ -38,7 +38,6 @@ public class EditProfileActivity extends AppCompatActivity {
     private RadioButton weekdayRadioButton, weekendRadioButton;
     private TextInputEditText timesInputText, techStackInputText, wantToLearnInputText, goalsInputText;
     private Button submitButton;
-
     private DatabaseReference databaseReference;
     private String username;
 
@@ -48,6 +47,7 @@ public class EditProfileActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_edit_profile);
 
+        // Updated to use the scrollable content container instead of main
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -79,10 +79,14 @@ public class EditProfileActivity extends AppCompatActivity {
         goalsInputText = findViewById(R.id.goalsInputText);
         submitButton = findViewById(R.id.submitButton);
 
-        usernameDisplay.setText(username);
+        // Set username display
+        if (username != null) {
+            usernameDisplay.setText(username);
+        }
     }
 
     private void setupSpinners() {
+        // Level Spinner Setup
         List<String> levelOptions = Arrays.asList(
                 "Select Level",
                 "Grade 6-11", "After O/L", "After A/L",
@@ -92,10 +96,12 @@ public class EditProfileActivity extends AppCompatActivity {
                 "Intern (Undergraduate / Graduate)",
                 "Professional / Employed", "Other"
         );
+
         ArrayAdapter<String> levelAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, levelOptions);
         levelAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         levelSpinner.setAdapter(levelAdapter);
 
+        // City Spinner Setup
         List<String> cityOptions = Arrays.asList(
                 "Select City",
                 "Ampara", "Anuradhapura", "Badulla", "Batticaloa", "Colombo", "Galle",
@@ -104,6 +110,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 "Mullaitivu", "Nuwara Eliya", "Polonnaruwa", "Puttalam", "Ratnapura",
                 "Trincomalee", "Vavuniya"
         );
+
         ArrayAdapter<String> cityAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, cityOptions);
         cityAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         citySpinner.setAdapter(cityAdapter);
@@ -114,16 +121,19 @@ public class EditProfileActivity extends AppCompatActivity {
     }
 
     private void handleSubmit() {
+        // Get gender selection
         String gender = "";
         int genderId = genderRadioGroup.getCheckedRadioButtonId();
         if (genderId == R.id.maleRadioButton) gender = "Male";
         else if (genderId == R.id.femaleRadioButton) gender = "Female";
 
+        // Get availability selection
         String availability = "";
         int availabilityId = availableRadioGroup.getCheckedRadioButtonId();
         if (availabilityId == R.id.radioButton) availability = "Weekdays";
         else if (availabilityId == R.id.radioButton2) availability = "Weekends";
 
+        // Get text inputs
         String bio = bioInputText.getText().toString().trim();
         String level = levelSpinner.getSelectedItem().toString();
         String city = citySpinner.getSelectedItem().toString();
@@ -132,16 +142,45 @@ public class EditProfileActivity extends AppCompatActivity {
         String wantToLearn = wantToLearnInputText.getText().toString().trim();
         String goals = goalsInputText.getText().toString().trim();
 
-        if (TextUtils.isEmpty(gender)) { toast("Please select a gender"); return; }
-        if (TextUtils.isEmpty(bio)) { bioInputText.setError("Bio is required"); return; }
-        if ("Select Level".equals(level)) { toast("Please select a level"); return; }
-        if ("Select City".equals(city)) { toast("Please select a city"); return; }
-        if (TextUtils.isEmpty(availability)) { toast("Please select availability"); return; }
-        if (TextUtils.isEmpty(times)) { timesInputText.setError("Times field is required"); return; }
-        if (TextUtils.isEmpty(techStack)) { techStackInputText.setError("Tech stack is required"); return; }
-        if (TextUtils.isEmpty(wantToLearn)) { wantToLearnInputText.setError("Want to learn field is required"); return; }
-        if (TextUtils.isEmpty(goals)) { goalsInputText.setError("Goals field is required"); return; }
+        // Validation
+        if (TextUtils.isEmpty(gender)) {
+            toast("Please select a gender");
+            return;
+        }
+        if (TextUtils.isEmpty(bio)) {
+            bioInputText.setError("Bio is required");
+            return;
+        }
+        if ("Select Level".equals(level)) {
+            toast("Please select a level");
+            return;
+        }
+        if ("Select City".equals(city)) {
+            toast("Please select a city");
+            return;
+        }
+        if (TextUtils.isEmpty(availability)) {
+            toast("Please select availability");
+            return;
+        }
+        if (TextUtils.isEmpty(times)) {
+            timesInputText.setError("Times field is required");
+            return;
+        }
+        if (TextUtils.isEmpty(techStack)) {
+            techStackInputText.setError("Tech stack is required");
+            return;
+        }
+        if (TextUtils.isEmpty(wantToLearn)) {
+            wantToLearnInputText.setError("Want to learn field is required");
+            return;
+        }
+        if (TextUtils.isEmpty(goals)) {
+            goalsInputText.setError("Goals field is required");
+            return;
+        }
 
+        // Save profile data
         saveProfileData(gender, bio, level, city, availability, times, techStack, wantToLearn, goals);
     }
 
