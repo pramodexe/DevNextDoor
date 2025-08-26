@@ -1,3 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Dashboard Meet Friends Icon - Location pin icon
+    
+    This vector drawable displays a location pin icon used in the dashboard
+    for the "Meet Friends" feature. Think of it like a GPS map marker that
+    shows where something is located.
+    
+    Used for:
+    - Meet Friends dashboard button
+    - Location-based features
+    - Geographic/mapping related functions
+    
+    Visual properties:
+    - Classic location pin shape with rounded top and pointed bottom
+    - Black fill color (#FF000000) for clear visibility
+    - Inner circle represents the exact location point
+    - Vector format allows scaling to any size without quality loss
+    - 384x512dp dimensions with proper viewport scaling
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="384dp"
     android:height="512dp"

@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Circle Background - White circular background with gray border
+    
+    This drawable creates a perfect circle with a white background and
+    gray border. Think of it like a circular badge or profile picture frame.
+    
+    Used for:
+    - Profile picture containers
+    - Circular buttons
+    - Icon backgrounds
+    - Avatar placeholders
+    
+    Visual properties:
+    - Perfect oval/circle shape
+    - White background (#FFFFFF)
+    - 2dp gray border for subtle definition
+    - Can be sized to any dimension while maintaining circular shape
+-->
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="oval">
-    <solid android:color="@android:color/white" />
+    <solid android:color="#FFFFFF" />
     <stroke
         android:width="2dp"
         android:color="@android:color/darker_gray" />

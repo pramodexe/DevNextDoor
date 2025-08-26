@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DevNextDoor"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAiLIxBp3F3ApbbuAEh3Erget-M_JRsJoI" />
+        
         <activity
             android:name=".MeetFriendsActivity"
             android:exported="false" />
@@ -21,7 +26,7 @@
             android:name=".SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".FavouritesActivity"
+            android:name=".FavoritesActivity"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity"
@@ -30,10 +35,19 @@
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
+            android:name=".UserProfileViewActivity"
+            android:exported="false" />
+        <activity
             android:name=".NotificationsActivity"
             android:exported="false" />
         <activity
             android:name=".ChatsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".UserDetailActivity"
             android:exported="false" />
         <activity
             android:name=".DashboardActivity"
@@ -43,6 +57,9 @@
             android:exported="false" />
         <activity
             android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileInstructionsActivity"
             android:exported="false" />
         <activity
             android:name=".HomepageActivity"

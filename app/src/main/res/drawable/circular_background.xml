@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Circular Background - Basic circular background shape with border
+    
+    This drawable creates a circular background with a border that can be used
+    behind round content like profile pictures or circular buttons.
+    Think of it like a circular frame with a subtle border around it.
+    
+    Used for:
+    - Profile picture backgrounds
+    - Circular button backgrounds
+    - Round avatar containers with borders
+    - Any UI element that needs a circular background with definition
+    
+    Visual properties:
+    - Perfect circle shape (oval with equal width and height)
+    - Light gray background (#F0F0F0) for subtle, neutral appearance
+    - Gray border (#CCCCCC) with 2dp thickness for definition
+    - Border provides visual separation from surrounding content
+    - Maintains perfect circular shape at any size
+    - Professional appearance suitable for user profiles and buttons
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#F0F0F0" />
+    <stroke android:width="2dp" android:color="#CCCCCC" />
+</shape>

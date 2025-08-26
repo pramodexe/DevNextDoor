@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Dark Bordered Box Background - Black box with white border
+    
+    This drawable creates a black box background with a white border,
+    providing high contrast and clear definition. Think of it like a
+    chalkboard with a white frame around it.
+    
+    Used for:
+    - High contrast content boxes
+    - Dark theme UI elements that need definition
+    - Content that needs to stand out against light backgrounds
+    - Special highlight boxes or important sections
+    
+    Visual properties:
+    - Rounded rectangle with 8dp corner radius for modern appearance
+    - Black background (@android:color/black) for maximum contrast
+    - White border (@android:color/white) with 2dp thickness for clear definition
+    - Strong contrast makes content easily readable
+    - Rounded corners create a professional, modern look
+    - High-contrast design suitable for accessibility needs
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@android:color/black" />
+    <stroke
+        android:width="2dp"
+        android:color="@android:color/white" />
+    <corners android:radius="8dp" />
+</shape>

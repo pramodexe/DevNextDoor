@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Box Background Dark - Cream-colored box for dark theme
+    
+    This drawable creates a cream-colored rectangular background with rounded
+    corners and a black border. Despite the name "dark", this is actually
+    used as the dark theme variant with a warm cream color instead of pure white.
+    
+    Used for:
+    - Dashboard feature boxes in dark theme
+    - Content containers in dark mode
+    - Card-like UI elements with warm tones
+    
+    Visual properties:
+    - Warm cream background (#F4F0D5) instead of harsh white
+    - 16dp rounded corners for a modern, soft look
+    - 1dp black border for definition and contrast
+    - Provides better visual comfort in dark theme contexts
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#F4F0D5"/>
+    <corners android:radius="16dp"/>
+    <stroke android:width="1dp" android:color="#000000"/>
+</shape>

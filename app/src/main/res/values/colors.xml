@@ -2,4 +2,37 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="main_background">#F4F0D5</color>
+    <color name="primary_blue">#4A90E2</color>
+    <color name="primary_green">#4CAF50</color>
+    <color name="light_green">#A5D6A7</color>
+    <color name="light_gray">#F0F0F0</color>
+    <color name="dark_gray">#666666</color>
+    <color name="red">#F44336</color>
+    <color name="text_hint">#999999</color>
+    <color name="male_color">#2196F3</color>
+    <color name="female_color">#E91E63</color>
+    <color name="text_secondary">#666666</color>
+    <color name="favorite_color">#E91E63</color>
+    <color name="notification_body_text">@android:color/black</color>  <!-- Black for notification body text in light mode -->
+    <color name="user_profile_card_background">@android:color/white</color>  <!-- Profile card background in light mode -->
+    <color name="profile_footer_text">@android:color/black</color>  <!-- Black color for profile footer text in light mode -->
+    <color name="profile_icon_color">@android:color/black</color>  <!-- Black color for profile icons in light mode -->
+    <color name="profile_username_color">@android:color/black</color>  <!-- Black color for username in light mode -->
+    <color name="profile_text_color">@android:color/black</color>  <!-- Black color for profile text in light mode -->
+    <color name="profile_box_text_color">@android:color/black</color>  <!-- Black color for text inside information boxes in light mode -->
+    <color name="favorite_icon_unfavorited">@android:color/black</color>  <!-- Black color for unfavorited heart icon in light mode -->
+    <color name="card_text_color">@android:color/black</color>  <!-- Black color for user profile card text in light mode -->
+    <color name="chat_username_color">#000000</color>  <!-- Black color for chat username in light mode (always black) -->
+    <color name="chat_message_color">#666666</color>  <!-- Gray color for chat last message in light mode -->
+    <color name="chat_timestamp_color">#000000</color>  <!-- Black color for chat timestamp in light mode (always black) -->
+    <color name="input_text_color">#000000</color>  <!-- Black color for input text in light mode -->
+    <color name="meet_friends_text_color">#FF000000</color>  <!-- Black color for Meet Friends text in light mode -->
+    <color name="meet_friends_button_background">#F4F0D5</color>  <!-- Light background for Meet Friends button in light mode -->
+    <color name="meet_friends_button_text">#FF000000</color>  <!-- Black text for Meet Friends button in light mode -->
+    <color name="edit_profile_back_arrow">#000000</color>  <!-- Black color for back arrow in edit profile in light mode -->
+    <color name="edit_profile_input_background">#FFFFFF</color>  <!-- White color for input fields in edit profile in light mode -->
+    <color name="edit_profile_dropdown_background">#FFFFFF</color>  <!-- White color for dropdown backgrounds in edit profile in light mode -->
+    <color name="edit_profile_dropdown_border">#CCCCCC</color>  <!-- Light gray border for dropdowns in edit profile in light mode -->
+    <color name="edit_profile_text_color">#000000</color>  <!-- Black color for text and placeholders in edit profile in light mode -->
 </resources>

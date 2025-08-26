@@ -9,20 +9,43 @@
     android:background="@drawable/main_bg"
     tools:context=".EditProfileActivity">
 
-    <!-- Sticky Header -->
-    <TextView
-        android:id="@+id/textView"
+    <!-- Header with back arrow and title -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="Complete Your Profile"
-        android:textAlignment="textStart"
-        android:textSize="26sp"
-        android:textStyle="bold" />
+        android:gravity="center_vertical">
+
+        <!-- Back arrow (only show when editing) -->
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_back"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            app:tint="@color/edit_profile_back_arrow" />
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/backArrow"
+            android:layout_marginStart="16dp"
+            android:text="Complete Your Profile"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -90,10 +113,12 @@
 
             <Spinner
                 android:id="@+id/profilePictureSpinner"
+                style="@style/EditProfileSpinnerStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:enabled="false" />
+                android:focusable="true"
+                android:clickable="true" />
 
             <!-- Bio -->
             <TextView
@@ -105,6 +130,7 @@
                 android:layout_marginBottom="8dp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditProfileInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp">
@@ -116,7 +142,9 @@
                     android:hint="Tell us about yourself"
                     android:gravity="top"
                     android:inputType="textMultiLine"
-                    android:maxLines="9" />
+                    android:maxLines="9"
+                    android:textColor="@color/edit_profile_text_color"
+                    android:textColorHint="@color/edit_profile_text_color" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -133,7 +161,10 @@
                 android:id="@+id/levelSpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="16dp"
+                android:minHeight="48dp"
+                android:focusable="true"
+                android:clickable="true" />
 
             <!-- City -->
             <TextView
@@ -148,7 +179,10 @@
                 android:id="@+id/citySpinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp" />
+                android:layout_marginBottom="16dp"
+                android:minHeight="48dp"
+                android:focusable="true"
+                android:clickable="true" />
 
             <!-- Availability -->
             <TextView
@@ -236,6 +270,7 @@
                 android:layout_marginBottom="8dp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditProfileInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp">
@@ -247,7 +282,9 @@
                     android:hint="e.g., Java, Python, React"
                     android:gravity="top"
                     android:inputType="textMultiLine"
-                    android:maxLines="6" />
+                    android:maxLines="6"
+                    android:textColor="@color/edit_profile_text_color"
+                    android:textColorHint="@color/edit_profile_text_color" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -261,6 +298,7 @@
                 android:layout_marginBottom="8dp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditProfileInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp">
@@ -272,7 +310,9 @@
                     android:hint="e.g., Spring Boot, MERN"
                     android:gravity="top"
                     android:inputType="textMultiLine"
-                    android:maxLines="6" />
+                    android:maxLines="6"
+                    android:textColor="@color/edit_profile_text_color"
+                    android:textColorHint="@color/edit_profile_text_color" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -286,6 +326,7 @@
                 android:layout_marginBottom="8dp" />
 
             <com.google.android.material.textfield.TextInputLayout
+                style="@style/EditProfileInputStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp">
@@ -297,7 +338,9 @@
                     android:hint="What projects do you wish to do?"
                     android:gravity="top"
                     android:inputType="textMultiLine"
-                    android:maxLines="9" />
+                    android:maxLines="9"
+                    android:textColor="@color/edit_profile_text_color"
+                    android:textColorHint="@color/edit_profile_text_color" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -342,7 +385,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="© DevNextDoor"
-            android:textColor="@android:color/black"
+            android:textColor="@color/profile_footer_text"
             android:textSize="16sp"
             android:gravity="center" />
 

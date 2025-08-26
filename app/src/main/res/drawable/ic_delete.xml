@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Delete Icon - Trash bin symbol for delete actions
+    
+    This vector drawable displays a trash bin icon used for delete or remove
+    actions throughout the app. Think of it like a waste basket that you
+    throw things into when you want to get rid of them.
+    
+    Used for:
+    - Delete buttons
+    - Remove item actions
+    - Trash/discard functionality
+    - Any "delete" or "remove" operation
+    
+    Visual properties:
+    - Classic trash bin shape with lid and body
+    - White fill color for visibility on dark backgrounds
+    - Tint color adapts to theme (colorOnSurface attribute)
+    - Vector format ensures crisp display at any size
+    - 24x24dp dimensions perfect for toolbar and action buttons
+    - Clean, simple design that clearly communicates "delete" action
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24"
+    android:tint="?attr/colorOnSurface">
+  <path
+      android:fillColor="@android:color/white"
+      android:pathData="M6,19c0,1.1 0.9,2 2,2h8c1.1,0 2,-0.9 2,-2V7H6v12zM19,4h-3.5l-1,-1h-5l-1,1H5v2h14V4z"/>
+</vector>

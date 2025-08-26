@@ -3,5 +3,41 @@
     <style name="Base.Theme.DevNextDoor" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="editTextColor">@color/input_text_color</item>
+    </style>
+    
+    <!-- Custom style for Login/Signup input fields in dark mode -->
+    <style name="LoginSignupInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/black</item>
+        <item name="boxStrokeWidth">1dp</item>
+        <item name="boxStrokeWidthFocused">2dp</item>
+        <item name="boxStrokeErrorColor">@color/black</item>
+        <item name="hintTextColor">@color/black</item>
+        <item name="helperTextTextColor">@color/black</item>
+        <item name="counterTextColor">@color/black</item>
+        <item name="placeholderTextColor">@color/black</item>
+        <item name="endIconTint">@color/black</item>
+        <item name="android:textColorHint">@color/black</item>
+    </style>
+    
+    <!-- Custom style for EditProfile input fields in dark mode -->
+    <style name="EditProfileInputStyle" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@color/edit_profile_input_background</item>
+        <item name="boxStrokeColor">@color/edit_profile_input_background</item>
+        <item name="hintTextColor">@color/edit_profile_text_color</item>
+        <item name="android:textColorHint">@color/edit_profile_text_color</item>
+    </style>
+    
+    <!-- Custom style for EditProfile dropdowns in dark mode -->
+    <style name="EditProfileSpinnerStyle" parent="Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/edit_profile_spinner_background</item>
+        <item name="android:textColor">@color/edit_profile_text_color</item>
+        <item name="android:popupBackground">@color/edit_profile_dropdown_background</item>
+        <item name="android:dropDownSelector">@drawable/edit_profile_dropdown_item_background</item>
+        <item name="android:paddingLeft">12dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingRight">36dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:minHeight">48dp</item>
     </style>
 </resources>

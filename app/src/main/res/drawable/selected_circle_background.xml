@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Selected Circle Background - Circular selection highlight
+    
+    This drawable creates a circular background that shows when something
+    round is selected or highlighted. Think of it like a circular spotlight
+    that appears when you choose a round button or profile picture.
+    
+    Used for:
+    - Selected circular profile pictures
+    - Round button selection states
+    - Circular avatar highlights
+    - Any round UI element that can be selected
+    
+    Visual properties:
+    - Perfect circle shape for round elements
+    - Light gray background (#E0E0E0) for subtle selection indication
+    - Neutral color that works well with most content
+    - Provides visual feedback without being too bold or distracting
+    - Maintains circular shape regardless of content size
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="#E0E0E0" />
+</shape>

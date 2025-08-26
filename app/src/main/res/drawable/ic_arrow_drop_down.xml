@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Arrow Drop Down Icon - Downward pointing arrow for dropdown menus
+    
+    This vector drawable displays a downward pointing arrow typically used
+    in dropdown menus and expandable sections. Think of it like an arrow
+    that points down to show "there's more content below this."
+    
+    Used for:
+    - Dropdown menu indicators
+    - Expandable section arrows
+    - "Show more" indicators
+    - Any UI element that expands downward
+    
+    Visual properties:
+    - Simple triangular arrow pointing downward
+    - Black fill color (#000000) for clear visibility
+    - Clean, minimalist design that's universally understood
+    - Vector format ensures crisp display at any size
+    - 24x24dp dimensions perfect for inline dropdown indicators
+    - Standard arrow shape used across many apps and websites
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#000000"
+        android:pathData="M7,10l5,5 5,-5z"/>
+</vector>

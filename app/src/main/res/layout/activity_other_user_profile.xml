@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:orientation="vertical">
+
+    <!-- Header with back arrow and action icons -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center_vertical">
+
+        <!-- Back arrow -->
+        <ImageView
+            android:id="@+id/backArrow"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_back"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"
+            app:tint="@color/profile_icon_color" />
+
+        <!-- Action icons on the right -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/chatIcon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_chat"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:padding="4dp"
+                app:tint="@color/profile_icon_color" />
+
+            <ImageView
+                android:id="@+id/favoriteIcon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/ic_favorite"
+                android:clickable="true"
+                android:focusable="true"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:padding="4dp"
+                app:tint="@color/favorite_icon_unfavorited" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <!-- Loading indicator -->
+        <LinearLayout
+            android:id="@+id/loadingLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:visibility="visible">
+
+            <ProgressBar
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="16dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading profile..."
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <!-- Profile content -->
+        <ScrollView
+            android:id="@+id/profileContent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:layout_margin="16dp"
+                android:gravity="center_horizontal"
+                tools:context=".OtherUserProfileActivity">
+
+            <!-- Profile Picture -->
+            <ImageView
+                android:id="@+id/profilePicture"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/circle_background"
+                android:src="@drawable/male_1"
+                android:scaleType="centerCrop" />
+
+            <!-- Username with gender icon -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/usernameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@shadow_walker"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/profile_username_color" />
+
+                <ImageView
+                    android:id="@+id/genderIcon"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="8dp"
+                    android:src="@drawable/male_icon"
+                    app:tint="#4A90E2" />
+            </LinearLayout>
+
+            <!-- Bio -->
+            <TextView
+                android:id="@+id/bioText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/box_bg"
+                android:padding="18dp"
+                android:text="Beginner dev with big ideas and good vibes 😊"
+                android:textSize="16sp"
+                android:textColor="@color/profile_box_text_color"
+                android:gravity="center" />
+
+            <!-- Education and Availability Info -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal">
+
+                <!-- Left side: Education Level and Location -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="240dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    android:orientation="vertical">
+
+                    <!-- I'm (Education Level) section -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginBottom="12dp"
+                        android:background="@drawable/box_bg"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="I'm"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/profile_box_text_color" />
+
+                        <TextView
+                            android:id="@+id/statusText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="After A/L"
+                            android:textSize="14sp"
+                            android:textColor="@color/profile_box_text_color" />
+                    </LinearLayout>
+
+                    <!-- From (Location) section -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/box_bg"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="From"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/profile_box_text_color" />
+
+                        <TextView
+                            android:id="@+id/locationText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="Colombo"
+                            android:textSize="14sp"
+                            android:textColor="@color/profile_box_text_color" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Right side: Available Times -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="240dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/box_bg"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Available in"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/profile_box_text_color"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Weekdays/Weekends row -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:layout_marginBottom="12dp">
+
+                        <TextView
+                            android:id="@+id/weekdayIndicator"
+                            android:layout_width="0dp"
+                            android:layout_height="32dp"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/circle_background"
+                            android:text="WD"
+                            android:textSize="12sp"
+                            android:textColor="@color/profile_text_color"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:id="@+id/weekendIndicator"
+                            android:layout_width="0dp"
+                            android:layout_height="32dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/circle_background"
+                            android:text="WE"
+                            android:textSize="12sp"
+                            android:textColor="@color/profile_text_color"
+                            android:gravity="center" />
+                    </LinearLayout>
+
+                    <!-- Time slots (vertical) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/morningIndicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/time_box_bg"
+                            android:text="Morning"
+                            android:textSize="13sp"
+                            android:textColor="@color/profile_text_color"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:id="@+id/dayIndicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/time_box_bg"
+                            android:text="Day"
+                            android:textSize="13sp"
+                            android:textColor="@color/profile_text_color"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:id="@+id/eveningIndicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:layout_marginBottom="4dp"
+                            android:background="@drawable/time_box_bg"
+                            android:text="Evening"
+                            android:textSize="13sp"
+                            android:textColor="@color/profile_text_color"
+                            android:gravity="center" />
+
+                        <TextView
+                            android:id="@+id/nightIndicator"
+                            android:layout_width="match_parent"
+                            android:layout_height="0dp"
+                            android:layout_weight="1"
+                            android:background="@drawable/time_box_bg"
+                            android:text="Night"
+                            android:textSize="13sp"
+                            android:textColor="@color/profile_text_color"
+                            android:gravity="center" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+
+            <!-- Tech Stack and Want to Learn -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:orientation="horizontal">
+
+                <!-- Tech Stack -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="12dp"
+                    android:background="@drawable/box_bg"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tech Stack"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/profile_box_text_color" />
+
+                    <TextView
+                        android:id="@+id/techStackText"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="8dp"
+                        android:text="- HTML\n- CSS\n- JavaScript\n- React\n- Python"
+                        android:textSize="14sp"
+                        android:textColor="@color/profile_box_text_color"
+                        android:gravity="top" />
+                </LinearLayout>
+
+                <!-- Want to Learn -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/box_bg"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Want to Learn"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/profile_box_text_color" />
+
+                    <TextView
+                        android:id="@+id/wantToLearnText"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginTop="8dp"
+                        android:text="- Java\n- Spring Boot"
+                        android:textSize="14sp"
+                        android:textColor="@color/profile_box_text_color"
+                        android:gravity="top" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Project Goals -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/box_bg"
+                android:orientation="vertical"
+                android:padding="18dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Project Goals"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/profile_box_text_color" />
+
+                <TextView
+                    android:id="@+id/projectGoalsText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Create a weather app using API.\nCreate a landing page using HTML and CSS, and Javascript.\nMake a basic game with Python."
+                    android:textSize="14sp"
+                    android:textColor="@color/profile_box_text_color" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    </FrameLayout>
+
+    <!-- Footer -->
+    <LinearLayout
+        android:id="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="© DevNextDoor"
+            android:textColor="@color/profile_footer_text"
+            android:textSize="16sp"
+            android:gravity="center" />
+    </LinearLayout>
+</LinearLayout>

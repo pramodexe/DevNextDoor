@@ -1,5 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@android:color/white" />
-    <corners android:radius="14dp" />
+<!-- 
+    Footer Selected Background - Highlighted footer item background
+    
+    This drawable creates a highlighted background for selected items in the
+    footer navigation. Think of it like highlighting a tab to show which
+    page you're currently on.
+    
+    Used for:
+    - Footer navigation selected states
+    - Bottom tab bar active indicators
+    - Current page highlighting in navigation
+    
+    Visual properties:
+    - Rounded rectangle shape with 16dp corner radius
+    - White background (#FFFFFF) for clean, bright appearance
+    - Solid color provides clear contrast against darker footer backgrounds
+    - Rounded corners create a modern, pill-like appearance
+    - Helps users understand their current location in the app
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="#FFFFFF" />
+    <corners android:radius="16dp" />
 </shape>

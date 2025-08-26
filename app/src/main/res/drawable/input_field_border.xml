@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#FFFFFF"/>
-    <corners android:radius="8dp"/>
-    <stroke android:width="1dp" android:color="#000000"/>
-    <padding android:left="12dp" android:top="12dp" android:right="12dp" android:bottom="12dp"/>
+<!-- 
+    Input Field Border - Standard border for text input fields
+    
+    This drawable creates a border around text input fields like email,
+    password, and message boxes. Think of it like a picture frame that
+    goes around your text to make it look neat and organized.
+    
+    Used for:
+    - Email input fields
+    - Password text boxes
+    - Message composition areas
+    - Any text input that needs a border
+    
+    Visual properties:
+    - Rounded rectangle with 8dp corner radius for modern appearance
+    - Black stroke/border (#000000) with 2dp thickness for clear definition
+    - No fill color (transparent inside) so text is clearly visible
+    - Rounded corners prevent sharp edges that look dated
+    - Border thickness provides good visibility without being overwhelming
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <corners android:radius="8dp" />
+    <stroke
+        android:width="2dp"
+        android:color="#000000" />
 </shape>

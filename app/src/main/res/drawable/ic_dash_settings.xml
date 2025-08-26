@@ -1,3 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Dashboard Settings Icon - Gear symbol for settings access
+    
+    This vector drawable displays a gear/cog icon used for accessing
+    settings and configuration options in the dashboard. Think of it
+    like the gears inside a machine that control how everything works.
+    
+    Used for:
+    - Settings buttons in the dashboard
+    - Configuration access points
+    - Preferences and options menus
+    - Account settings navigation
+    
+    Visual properties:
+    - Classic gear/cog shape with teeth around the circumference
+    - Black fill color (#FF000000) for clear visibility
+    - Universally recognized symbol for settings and configuration
+    - Vector format ensures crisp display at any size
+    - 512x512dp square dimensions for consistent dashboard icon sizing
+    - Detailed gear teeth design that's easily recognizable
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="512dp"
     android:height="512dp"

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark mode specific colors -->
+    <color name="dashboard_title_text">#FF000000</color>  <!-- Black for dashboard title in dark mode -->
+    <color name="nav_search_icon_text">#FF000000</color>  <!-- Black for search icon and text in dark mode -->
+    <color name="notification_body_text">#BFF4F0D5</color>  <!-- Semi-transparent #f4f0d5 for notification body text in dark mode -->
+    <color name="user_profile_card_background">#F4F0D5</color>  <!-- Profile card background in dark mode -->
+    <color name="profile_footer_text">#FFFFFF</color>  <!-- White color for profile footer text in dark mode -->
+    <color name="profile_icon_color">#FFFFFF</color>  <!-- White color for profile icons in dark mode -->
+    <color name="profile_username_color">#FFFFFF</color>  <!-- White color for username in dark mode -->
+    <color name="profile_text_color">#FFFFFF</color>  <!-- White color for profile text in dark mode -->
+    <color name="profile_box_text_color">#000000</color>  <!-- Black color for text inside information boxes in dark mode -->
+    <color name="favorite_icon_unfavorited">#FFFFFF</color>  <!-- White color for unfavorited heart icon in dark mode -->
+    <color name="card_text_color">#000000</color>  <!-- Black color for user profile card text in dark mode -->
+    <color name="chat_username_color">#000000</color>  <!-- Black color for chat username in dark mode (always black) -->
+    <color name="chat_message_color">#000000</color>  <!-- Black color for chat last message in dark mode (always black) -->
+    <color name="chat_timestamp_color">#000000</color>  <!-- Black color for chat timestamp in dark mode (always black) -->
+    <color name="input_text_color">#FF000000</color>  <!-- Explicit black color for input text in dark mode -->
+    <color name="text_secondary">#666666</color>  <!-- Gray color for secondary text in dark mode -->
+    <color name="meet_friends_text_color">#FF000000</color>  <!-- Black color for Meet Friends text in dark mode -->
+    <color name="meet_friends_button_background">#000000</color>  <!-- Black background for Meet Friends button in dark mode -->
+    <color name="meet_friends_button_text">#FFFFFF</color>  <!-- White text for Meet Friends button in dark mode -->
+    <color name="edit_profile_back_arrow">#FFFFFF</color>  <!-- White color for back arrow in edit profile in dark mode -->
+    <color name="edit_profile_input_background">#F4F0D5</color>  <!-- Cream color for input fields in edit profile in dark mode -->
+    <color name="edit_profile_dropdown_background">#F4F0D5</color>  <!-- Cream color for dropdown backgrounds in edit profile in dark mode -->
+    <color name="edit_profile_dropdown_border">#F4F0D5</color>  <!-- Same as background for seamless look in dark mode -->
+    <color name="edit_profile_text_color">#000000</color>  <!-- Black color for text and placeholders in edit profile in dark mode -->
+</resources>

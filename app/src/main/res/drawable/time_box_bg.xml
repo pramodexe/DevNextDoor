@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Time Box Background - Smaller white box for time indicators
+    
+    This drawable creates a white rectangular background with smaller rounded
+    corners and a black border. Think of it like a small badge or label.
+    
+    Used for:
+    - Time stamps in chat messages
+    - Small information labels
+    - Compact UI indicators
+    
+    Visual properties:
+    - White background (#FFFFFF)
+    - 8dp rounded corners (smaller than main boxes for compactness)
+    - 1dp black border for clear definition
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#FFFFFF"/>
+    <corners android:radius="8dp"/>
+    <stroke android:width="1dp" android:color="#000000"/>
+</shape>

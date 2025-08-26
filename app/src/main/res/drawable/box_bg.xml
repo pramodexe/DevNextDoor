@@ -1,4 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Box Background - Standard white box design
+    
+    This drawable creates a white rectangular background with rounded corners
+    and a black border. Think of it like a white card or box with soft edges.
+    
+    Used for:
+    - Dashboard feature boxes
+    - Content containers
+    - Card-like UI elements
+    
+    Visual properties:
+    - White background (#FFFFFF)
+    - 16dp rounded corners for a modern, soft look
+    - 1dp black border for definition and contrast
+-->
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
     <solid android:color="#FFFFFF"/>
     <corners android:radius="16dp"/>

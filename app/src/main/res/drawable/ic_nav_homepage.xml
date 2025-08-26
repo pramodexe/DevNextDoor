@@ -1,3 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Navigation Homepage Icon - House symbol for home navigation
+    
+    This vector drawable displays a house icon used in the bottom navigation
+    for the homepage/home tab. Think of it like the "home" button on a TV
+    remote that takes you back to the main screen.
+    
+    Used for:
+    - Bottom navigation home tab
+    - Homepage navigation buttons
+    - Main screen/dashboard access
+    - "Go to home" functionality
+    
+    Visual properties:
+    - Classic house shape with triangular roof and rectangular base
+    - Black fill color (#FF000000) for clear visibility in navigation
+    - Simple, recognizable home symbol universally understood
+    - Vector format ensures crisp display at any size
+    - 576x512dp dimensions optimized for navigation icons
+    - Clean lines represent a welcoming "home" concept
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="576dp"
     android:height="512dp"

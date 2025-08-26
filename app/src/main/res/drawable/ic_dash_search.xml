@@ -1,3 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Dashboard Search Icon - Magnifying glass for search functionality
+    
+    This vector drawable displays a magnifying glass icon used for search
+    features in the dashboard. Think of it like a detective's magnifying
+    glass that helps you find things you're looking for.
+    
+    Used for:
+    - Search buttons in the dashboard
+    - Search input field icons
+    - "Find" or "Discover" functionality
+    - Any search-related features
+    
+    Visual properties:
+    - Classic magnifying glass shape with circular lens and handle
+    - Black fill color (#FF000000) for clear visibility
+    - Universally recognized symbol for search
+    - Vector format ensures crisp display at any size
+    - 512x512dp square dimensions for consistent dashboard icon sizing
+    - Clean, simple design that immediately communicates "search" function
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="512dp"
     android:height="512dp"

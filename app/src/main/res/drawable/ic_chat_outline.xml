@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+    Chat Outline Icon - Speech bubble outline for messaging
+    
+    This vector drawable displays an outlined speech bubble icon used for
+    chat and messaging features. Think of it like an empty speech bubble
+    in a comic book, waiting to be filled with conversation.
+    
+    Used for:
+    - Chat/messaging buttons
+    - Conversation navigation
+    - Message composition indicators
+    - Communication features
+    
+    Visual properties:
+    - Speech bubble outline with rounded corners and tail
+    - Black stroke color (#FF000000) with 32px thickness for visibility
+    - Transparent fill for a clean, outlined appearance
+    - Vector format ensures crisp display at any size
+    - 512x512dp dimensions suitable for larger UI elements
+    - Classic chat bubble shape with pointer tail universally understood
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="512dp"
+    android:height="512dp"
+    android:viewportWidth="512"
+    android:viewportHeight="512">
+  <path
+      android:fillColor="#00000000"
+      android:strokeColor="#FF000000"
+      android:strokeWidth="32"
+      android:pathData="M64,32C46.3,32 32,46.3 32,64L32,352c0,17.7 14.3,32 32,32l96,0 0,80c0,6.1 3.4,11.6 8.8,14.3s11.9,2.1 16.8,-1.5L309.3,384 448,384c17.7,0 32,-14.3 32,-32l0,-288c0,-17.7 -14.3,-32 -32,-32L64,32z"/>
+</vector>
