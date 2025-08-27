@@ -123,6 +123,12 @@ public class SignupActivity extends AppCompatActivity {
             return;
         }
 
+        // Check if username contains only letters, numbers, and underscores
+        if (!username.matches("^[a-zA-Z0-9_]+$")) {
+            Toast.makeText(SignupActivity.this, "Username can only contain letters, numbers, and underscores", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // Check if password field is empty
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(SignupActivity.this, "Password required", Toast.LENGTH_SHORT).show();

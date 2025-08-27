@@ -331,6 +331,11 @@ public class SettingsActivity extends AppCompatActivity {
                         Toast.makeText(this, "New username is the same as current username", Toast.LENGTH_SHORT).show();
                         return;
                     }
+                    // Check if username contains only letters, numbers, and underscores
+                    if (!newUsername.matches("^[a-zA-Z0-9_]+$")) {
+                        Toast.makeText(this, "Username can only contain letters, numbers, and underscores", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     performUsernameChange(newUsername);
                 })
                 .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())

@@ -93,38 +93,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     /**
-     * This method handles the login process step by step.
-     * It gets the username and password from the input fields,
-     * checks if they are valid, and then verifies them with the database.
-     */
-    private void handleLogin() {
-        // Get the username text from the input field (remove extra spaces)
-        String username = usernameInputText.getText() != null ?
-                usernameInputText.getText().toString().trim() : "";
-                
-        // Get the password text from the input field
-        String password = passwordInputText.getText() != null ?
-                passwordInputText.getText().toString() : "";
-
-        // Check if username field is empty
-        if (TextUtils.isEmpty(username)) {
-            // Show error message to user if username is missing
-            Toast.makeText(LoginActivity.this, "Username is required", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // Check if password field is empty
-        if (TextUtils.isEmpty(password)) {
-            // Show error message to user if password is missing
-            Toast.makeText(LoginActivity.this, "Password is required", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        // If both username and password are provided, check if they are correct
-        validateUserCredentials(username, password);
-    }
-
-    /**
      * This method checks if the username and password are correct.
      * It looks up the user information in the Firebase database.
      * If the credentials match, it logs the user in and takes them to the homepage.
@@ -142,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (dataSnapshot.exists()) {
                     // Get the stored password for this username
                     String storedPassword = dataSnapshot.child("password").getValue(String.class);
-                    
+
                     // Check if the entered password matches the stored password
                     if (storedPassword != null && storedPassword.equals(password)) {
                         // Show success message to user
@@ -165,17 +133,17 @@ public class LoginActivity extends AppCompatActivity {
                             public void onResult(boolean isDarkMode) {
                                 // Save the user's theme preference on the device
                                 ThemeManager.saveDarkModePreference(LoginActivity.this, isDarkMode);
-                                
+
                                 // Create instruction to go to the main homepage
                                 Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                                 intent.putExtra("isNewUser", false);
-                                
+
                                 // Clear all previous screens so user can't go back to login
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                
+
                                 // Start the homepage
                                 startActivity(intent);
-                                
+
                                 // Close this login screen
                                 finish();
                             }
@@ -188,17 +156,17 @@ public class LoginActivity extends AppCompatActivity {
                             public void onError(String error) {
                                 // Use light mode as default if we can't get user's preference
                                 ThemeManager.saveDarkModePreference(LoginActivity.this, false);
-                                
+
                                 // Create instruction to go to the main homepage
                                 Intent intent = new Intent(LoginActivity.this, HomepageActivity.class);
                                 intent.putExtra("isNewUser", false);
-                                
+
                                 // Clear all previous screens so user can't go back to login
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                
+
                                 // Start the homepage
                                 startActivity(intent);
-                                
+
                                 // Close this login screen
                                 finish();
                             }
@@ -223,5 +191,37 @@ public class LoginActivity extends AppCompatActivity {
                 Toast.makeText(LoginActivity.this, "Database error: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    /**
+     * This method handles the login process step by step.
+     * It gets the username and password from the input fields,
+     * checks if they are valid, and then verifies them with the database.
+     */
+    private void handleLogin() {
+        // Get the username text from the input field (remove extra spaces)
+        String username = usernameInputText.getText() != null ?
+                usernameInputText.getText().toString().trim() : "";
+
+        // Get the password text from the input field
+        String password = passwordInputText.getText() != null ?
+                passwordInputText.getText().toString() : "";
+
+        // Check if username field is empty
+        if (TextUtils.isEmpty(username)) {
+            // Show error message to user if username is missing
+            Toast.makeText(LoginActivity.this, "Username is required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Check if password field is empty
+        if (TextUtils.isEmpty(password)) {
+            // Show error message to user if password is missing
+            Toast.makeText(LoginActivity.this, "Password is required", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // If both username and password are provided, check if they are correct
+        validateUserCredentials(username, password);
     }
 }
